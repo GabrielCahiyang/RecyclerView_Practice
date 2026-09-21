@@ -4,9 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class userManager {
+
+
     private Users CurUser;
+
     private static userManager instance;
+
     private final ArrayList<Users> userList = new ArrayList<>();
+
     private int nextId = 1;
 
     private userManager(){}
@@ -18,17 +23,7 @@ public class userManager {
         return instance;
     }
 
-    public Users getCurUser() {
-        return CurUser;
-    }
 
-    public void setCurUser(Users curUser) {
-        CurUser = curUser;
-    }
-
-    public void logout() {
-        this.CurUser = null;
-    }
 
     public boolean registerUser(String name, String email, String password){
         for(Users CurUser : userList){
@@ -38,6 +33,7 @@ public class userManager {
 
         }
         userList.add(new Users(nextId++, name, email, password));
+
         return true;
     }
 
@@ -53,6 +49,18 @@ public class userManager {
 
     public List<Users> getAllUsers(){
         return new ArrayList<>(userList);
+    }
+
+    public Users getCurUser() {
+        return CurUser;
+    }
+
+    public void setCurUser(Users curUser) {
+        CurUser = curUser;
+    }
+
+    public void logout() {
+        this.CurUser = null;
     }
 
 }
